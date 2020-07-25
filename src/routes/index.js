@@ -40,13 +40,13 @@ router.post('/users', [
 });
 
 
-router.put('/upload/:id', [param('id').isNumeric(), ], (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    uploadPhoto(req, res);
-});
+// router.put('/upload/:id', [param('id').isNumeric(), ], (req, res) => {
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//         return res.status(400).json({ errors: errors.array() });
+//     }
+//     uploadPhoto(req, res);
+// });
 
 
 

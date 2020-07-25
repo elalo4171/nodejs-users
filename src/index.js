@@ -6,8 +6,9 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
 //rutas 
 app.use(require('./routes/index'));
-
+app.use(require('./routes/upload'));
 
 app.listen(port, () => console.log(`Server on port ${port}`));
