@@ -1,0 +1,10 @@
+
+docker run -p 5432:5432  --name postgres-user -e POSTGRES_PASSWORD=postgres -d postgres
+//Instruccion para crear el contenedor la primera vez
+
+docker start postgres-user
+//Instruccion para iniciarl el contenedor que ya existe
+
+
+
+
