@@ -4,7 +4,7 @@ const { param, body, validationResult } = require('express-validator');
 
 const router = Router();
 
-const { pool, getUsers, createUser, getUserById } = require('../controller/index.controller');
+const { pool, getUsers, createUser, getUserById, uploadPhoto } = require('../controller/index.controller');
 
 router.get('/users', getUsers);
 
@@ -37,6 +37,15 @@ router.post('/users', [
         return res.status(400).json({ errors: errors.array() });
     }
     createUser(req, res);
+});
+
+
+router.put('/upload/:id', [param('id').isNumeric(), ], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    uploadPhoto(req, res);
 });
 
 

@@ -46,11 +46,17 @@ const createUser = async(req, res) => {
 
 }
 
+const uploadPhoto = async(req, res) => {
+
+    res.send('PhotoUp');
+}
+
 
 
 module.exports = {
     pool,
     getUsers,
     getUserById,
-    createUser
+    createUser,
+    uploadPhoto
 };
