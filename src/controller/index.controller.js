@@ -36,19 +36,25 @@ const getUserById = async(req, res) => {
 }
 
 const createUser = async(req, res) => {
-    const { name, email } = req.body;
-    const response = await pool.query('INSERT into users(name,email) values($1,$2)', [name, email]);
 
+    const { name, email, url } = req.body;
+    let verificarCorreo = await pool.query('SELECT * FROM users where email=$1', [email]);
+    if (verificarCorreo.rowCount > 0) {
+        return res.status(404).json({
+            ok: false,
+            err: {
+                message: 'Este correo ya esta registrado'
+            }
+        });
+    }
+
+    await pool.query('INSERT into users(name,email,url_foto) values($1,$2,$3)', [name, email, url]);
+    const userBD = await pool.query('SELECT * FROM users where email=$1', [email]);
     res.json({
         message: 'Usuer add succesfully',
-        body: { user: { name, email }, }
+        body: { user: userBD.rows }
     })
 
-}
-
-const uploadPhoto = async(req, res) => {
-
-    res.send('PhotoUp');
 }
 
 
@@ -58,5 +64,4 @@ module.exports = {
     getUsers,
     getUserById,
     createUser,
-    uploadPhoto
 };

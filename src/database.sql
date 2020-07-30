@@ -5,7 +5,8 @@ CREATE DATABASE users;
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(40),
-    email TEXT
+    email TEXT,
+    url_foto TEXT,
 );
 
 insert into users (name, email) VALUES
