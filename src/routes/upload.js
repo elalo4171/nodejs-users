@@ -4,8 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const { pool } = require('../controller/index.controller');
-const { url } = require('inspector');
-const { param, body, validationResult } = require('express-validator');
+const { param, validationResult } = require('express-validator');
 
 
 app.use(fileUpload());
