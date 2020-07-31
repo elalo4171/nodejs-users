@@ -8,6 +8,13 @@ const { pool, getUsers, createUser, getUserById, uploadPhoto } = require('../con
 
 router.get('/users', getUsers);
 
+router.get('/', (req, res) => {
+    res.json({
+        ok: true,
+        message: 'Api levantada'
+    })
+});
+
 
 router.get('/users/:id', [
     param('id').isNumeric(),
